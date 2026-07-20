@@ -75,7 +75,7 @@ payload = {
     'start': rows[0]['date'], 'end': rows[-1]['date'],
     'features': list(f.columns), 'regimes': names, 'rows': rows,
     'persistence': round(persistence, 1),
-    'method': 'Expanding-window four-component Gaussian mixture model; 36-month initial estimation window; four initialisations; diagonal covariance; contemporaneous monthly classification.',
+    'method': 'Expanding-window four-component Gaussian mixture model; 36-month initial estimation window; four initialisations; diagonal covariance; monthly data based classification.',
 }
 Path('/workspace/scratch/6a3e855c3f13/regime-model-data.json').write_text(json.dumps(payload, separators=(',', ':')))
 print(json.dumps({k: payload[k] for k in ['generated','start','end','persistence']}))
