@@ -15,7 +15,7 @@ An investment research project that uses unsupervised machine learning to identi
 market-regime-detector/
 ├── index.html                    # Self-contained interactive dashboard
 ├── model/
-│   └── build_regime_model.py    # Python estimation and data-preparation pipeline
+│   └── regime_model.py    # Python estimation and data-preparation pipeline
 ├── data/
 │   └── regime-model-data.json   # Generated monthly model output
 ├── requirements.txt             # Python dependencies
@@ -34,9 +34,9 @@ The Python pipeline constructs seven monthly features from market and macroecono
 6. Year-on-year industrial production growth
 7. Three month change in unemployment
 
-An expanding window, four component Gaussian Mixture Model is estimated after an initial 36-month training period. The model is re-fitted for every subsequent observation, so future market observations are excluded from each historical estimation.
+An expanding window, four-component Gaussian Mixture Model is estimated after an initial 36-month training period. The model is re-fitted for every subsequent observation, so future market observations are excluded from each historical estimation.
 
-The statistical components are interpreted as **Expansion**, **Inflation Shock**, **Market Stress**, and **Recovery**. This is acheived by analysing the average characteristics of each statistical group after converting all variables into z-scores, which puts indicators such as VIX, inflation and equity returns on a comparable scale so that no variable dominates simply because it is measured using larger nubmbers. Posterior regime probabilities are then applied to regime-specific target portfolios.
+The statistical components are interpreted as **Expansion**, **Inflation Shock**, **Market Stress**, and **Recovery**. This is achieved by analysing the average characteristics of each statistical group after converting all variables into z-scores, which puts indicators such as VIX, inflation and equity returns on a comparable scale so that no variable dominates simply because it is measured using larger numbers. Posterior regime probabilities are then applied to regime-specific target portfolios.
 
 ## Allocation design
 
@@ -55,7 +55,7 @@ The finished dashboard requires only a browser. Re-estimating the model requires
 
 ```bash
 pip install -r requirements.txt
-python model/build_regime_model.py
+python model/regime_model.py
 ```
 
 The current research build reads downloaded FRED CSV files from a temporary input directory. A future development stage could replace this with a documented data download module or API integration.
