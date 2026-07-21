@@ -52,7 +52,7 @@ def label_components(means):
     return {expansion: 0, inflation: 1, stress: 2, recovery: 3}
 
 for end in range(min_train, len(f)):
-    train = f.iloc[:end]
+    train = f.iloc[:end] 
     scaler = StandardScaler().fit(train)
     z = scaler.transform(train)
     model = GaussianMixture(n_components=4, covariance_type='diag', n_init=4,
@@ -71,7 +71,7 @@ for end in range(min_train, len(f)):
 dominant = np.array([int(np.argmax(r['p'])) for r in rows])
 persistence = float(np.mean(dominant[1:] == dominant[:-1]) * 100)
 payload = {
-    'generated': pd.Timestamp.now(tz='Europe/London').strftime('%Y-%m-%d'),
+    'generated': pd.Timestamp.now(tz='Europe/London').strftime('%Y-%m-%d'),     
     'start': rows[0]['date'], 'end': rows[-1]['date'],
     'features': list(f.columns), 'regimes': names, 'rows': rows,
     'persistence': round(persistence, 1),
